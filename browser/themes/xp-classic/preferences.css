@@ -4,11 +4,18 @@
 
 /* =======================================================================
  * Firefox 1.0 Options / Preferences & In-Content Pages (preferences.css)
+ * Reference: browser/themes/winstripe/browser/pref/pref.css & Options.png
  * ======================================================================= */
 
 @import url("chrome://global/skin/xp-classic/variables.css");
+@import url("chrome://global/skin/xp-classic/widgets.css");
+@import url("chrome://global/skin/xp-classic/dialogs.css");
+
+@namespace html url("http://www.w3.org/1999/xhtml");
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 :root {
+  color-scheme: light !important;
   --in-content-page-background: var(--xp-bg-face) !important;
   --in-content-page-color: var(--xp-text-primary) !important;
   --in-content-box-background: var(--xp-bg-window) !important;
@@ -17,4 +24,113 @@
   --in-content-primary-button-text-color: var(--xp-text-primary) !important;
   --in-content-button-background: #f3f1e8 !important;
   --in-content-button-text-color: var(--xp-text-primary) !important;
+  --background-color-canvas: var(--xp-bg-face) !important;
+  --background-color-box: var(--xp-bg-window) !important;
+  --text-color: var(--xp-text-primary) !important;
+  --border-color-card: var(--xp-3d-shadow) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+/* Classic Firefox 1.0 Options Left Icon Sidebar (#categories) */
+#categories {
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-left: 1px solid var(--xp-3d-shadow) !important;
+  border-right: 1px solid var(--xp-3d-highlight) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-dark-shadow) !important;
+  margin: 8px 6px 8px 8px !important;
+  padding: 4px !important;
+  width: 150px !important;
+}
+
+#categories html|moz-page-nav-button {
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  margin: 1px 0 !important;
+  padding: 4px 6px !important;
+  color: var(--xp-text-primary) !important;
+  background-color: transparent !important;
+}
+
+/* Classic 1.0 pref.css hover (#E0E8F6 / #98B4E2) and checked (#C1D2EE / #316AC5) states */
+#categories html|moz-page-nav-button:hover {
+  border: 1px solid #98b4e2 !important;
+  background-color: #e0e8f6 !important;
+  color: #000000 !important;
+}
+
+#categories html|moz-page-nav-button[selected] {
+  border: 1px solid #316ac5 !important;
+  background-color: #c1d2ee !important;
+  color: #000000 !important;
+  font-weight: bold !important;
+}
+
+/* Classic 1.0 Options.png 32x32 category icons above/beside category buttons */
+#categories html|moz-page-nav-button::before {
+  content: "";
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  margin-inline-end: 6px;
+  background-image: url("chrome://browser/skin/xp-classic/icons/Options.png");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+}
+
+/* General / Home (col 0: x = 0px) */
+#category-general::before,
+#category-home::before {
+  background-position: 0px 0px;
+}
+#category-general:is(:hover, [selected])::before,
+#category-home:is(:hover, [selected])::before {
+  background-position: 0px -32px;
+}
+
+/* Privacy / Passwords (col 1: x = -32px) */
+#category-privacy::before,
+#category-passwords-autofill::before {
+  background-position: -32px 0px;
+}
+#category-privacy:is(:hover, [selected])::before,
+#category-passwords-autofill:is(:hover, [selected])::before {
+  background-position: -32px -32px;
+}
+
+/* Web Features / Search / Appearance / Tabs (col 2: x = -64px) */
+#category-search::before,
+#category-appearance::before,
+#category-tabs-browsing::before {
+  background-position: -64px 0px;
+}
+#category-search:is(:hover, [selected])::before,
+#category-appearance:is(:hover, [selected])::before,
+#category-tabs-browsing:is(:hover, [selected])::before {
+  background-position: -64px -32px;
+}
+
+/* Downloads (col 3: x = -96px) */
+#category-downloads::before {
+  background-position: -96px 0px;
+}
+#category-downloads:is(:hover, [selected])::before {
+  background-position: -96px -32px;
+}
+
+/* Advanced / Sync / More (col 4: x = -128px) */
+#category-sync::before,
+#category-accessibility::before,
+#category-more-from-mozilla::before {
+  background-position: -128px 0px;
+}
+#category-sync:is(:hover, [selected])::before,
+#category-accessibility:is(:hover, [selected])::before,
+#category-more-from-mozilla:is(:hover, [selected])::before {
+  background-position: -128px -32px;
 }
