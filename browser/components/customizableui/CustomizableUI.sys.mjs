@@ -359,21 +359,17 @@ var CustomizableUIInternal = {
     );
 
     let navbarPlacements = [
-      lazy.sidebarRevampEnabled ? "sidebar-button" : null,
       "back-button",
       "forward-button",
       "stop-reload-button",
       Services.policies.isAllowed("removeHomeButtonByDefault")
         ? null
         : "home-button",
-      "spring",
-      "vertical-spacer",
       "urlbar-container",
-      "spring",
+      "search-container",
       "downloads-button",
       AppConstants.MOZ_DEV_EDITION ? "developer-button" : null,
       lazy.ippEnabled ? "ipprotection-button" : null,
-      "fxa-toolbar-menu-button",
       lazy.resetPBMToolbarButtonEnabled ? "reset-pbm-toolbar-button" : null,
       lazy.fireButtonEnabled ? "fire-button" : null,
     ].filter(name => name);

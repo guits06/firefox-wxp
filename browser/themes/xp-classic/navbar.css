@@ -6,11 +6,414 @@
  * Firefox 1.0 Navigation Toolbar, Address Bar & Search Bar (navbar.css)
  * ======================================================================= */
 
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
 #nav-bar {
   min-height: var(--xp-navbar-height) !important;
-  padding: 1px 2px !important;
+  padding: 2px 3px !important;
   border-top: 1px solid var(--xp-3d-highlight) !important;
   border-bottom: 1px solid var(--xp-3d-shadow) !important;
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
+  box-shadow: none !important;
+}
+
+#nav-bar-customization-target {
+  align-items: center !important;
+}
+
+/* Neutralize modern Proton toolbarbutton inner box backgrounds/outlines */
+#nav-bar .toolbarbutton-1 {
+  appearance: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 4px !important;
+  margin: 0 1px !important;
+  background: transparent !important;
+}
+
+#nav-bar .toolbarbutton-1 > :is(.toolbarbutton-icon, .toolbarbutton-text, .toolbarbutton-badge-stack) {
+  background: transparent !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#nav-bar .toolbarbutton-1:not([disabled="true"], [disabled]):hover {
+  border-color: var(--xp-3d-highlight) var(--xp-3d-shadow) var(--xp-3d-shadow) var(--xp-3d-highlight) !important;
+  background-color: transparent !important;
+}
+
+#nav-bar .toolbarbutton-1:not([disabled="true"], [disabled]):is(:hover:active, [open="true"], [checked="true"]) {
+  border-color: var(--xp-3d-shadow) var(--xp-3d-highlight) var(--xp-3d-highlight) var(--xp-3d-shadow) !important;
+  padding: 5px 3px 3px 5px !important;
+  background-color: transparent !important;
+}
+
+/* ::::: Separate Reload and Stop buttons side by side (1.0 Order: Reload, Stop) ::::: */
+
+#stop-reload-button {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#stop-reload-button > #reload-button,
+#stop-reload-button > #stop-button {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Hide internal SVG animatable boxes for reload/stop so Winstripe sprites show cleanly */
+#reload-button > .toolbarbutton-animatable-box,
+#stop-button > .toolbarbutton-animatable-box {
+  display: none !important;
+}
+
+/* ::::: Winstripe 24x24 Toolbar.png Sprite Icons :::::
+ * Columns (each 24px wide):
+ * 0: Back (0px), 1: Forward (-24px), 2: Stop (-48px), 3: Reload (-72px),
+ * 4: Home (-96px), 5: Downloads (-120px), 6: History (-144px),
+ * 7: Bookmarks (-168px), 8: Print (-192px), 9: New Tab (-216px), 10: New Window (-240px)
+ * Rows (each 24px high):
+ * Row 0 (0px): Normal, Row 1 (-24px): Hover, Row 2 (-48px): Disabled
+ */
+
+#nav-bar :is(
+  #back-button,
+  #forward-button,
+  #stop-button,
+  #reload-button,
+  #home-button,
+  #downloads-button,
+  #history-panelmenu,
+  #bookmarks-menu-button,
+  #print-button,
+  #new-tab-button,
+  #new-window-button
+) {
+  list-style-image: none !important;
+}
+
+#nav-bar :is(
+  #back-button,
+  #forward-button,
+  #stop-button,
+  #reload-button,
+  #home-button,
+  #downloads-button,
+  #history-panelmenu,
+  #bookmarks-menu-button,
+  #print-button,
+  #new-tab-button,
+  #new-window-button
+) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack > .toolbarbutton-icon),
+#downloads-button #downloads-indicator-icon {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  list-style-image: none !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/Toolbar.png") !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Back Button (col 0: x = 0px) */
+#back-button > .toolbarbutton-icon {
+  background-position: 0px 0px !important;
+}
+#back-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: 0px -24px !important;
+}
+#back-button:is([disabled="true"], [disabled]) > .toolbarbutton-icon {
+  background-position: 0px -48px !important;
+}
+
+/* Forward Button (col 1: x = -24px) */
+#forward-button > .toolbarbutton-icon {
+  background-position: -24px 0px !important;
+}
+#forward-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -24px -24px !important;
+}
+#forward-button:is([disabled="true"], [disabled]) > .toolbarbutton-icon {
+  background-position: -24px -48px !important;
+}
+
+/* Reload Button (col 3: x = -72px) */
+#reload-button > .toolbarbutton-icon {
+  background-position: -72px 0px !important;
+}
+#reload-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -72px -24px !important;
+}
+#reload-button:is([disabled="true"], [disabled], [displaystop]) > .toolbarbutton-icon {
+  background-position: -72px -48px !important;
+}
+
+/* Stop Button (col 2: x = -48px) */
+#stop-button > .toolbarbutton-icon {
+  background-position: -48px 0px !important;
+}
+#stop-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -48px -24px !important;
+}
+#stop-button:is([disabled="true"], [disabled]) > .toolbarbutton-icon,
+#reload-button:not([displaystop]) + #stop-button > .toolbarbutton-icon {
+  background-position: -48px -48px !important;
+}
+#reload-button:not([displaystop]) + #stop-button {
+  pointer-events: none !important;
+  border-color: transparent !important;
+}
+
+/* Home Button (col 4: x = -96px) */
+#home-button > .toolbarbutton-icon {
+  background-position: -96px 0px !important;
+}
+#home-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -96px -24px !important;
+}
+#home-button:is([disabled="true"], [disabled]) > .toolbarbutton-icon {
+  background-position: -96px -48px !important;
+}
+
+/* Downloads Button (col 5: x = -120px) */
+#downloads-button #downloads-indicator-icon {
+  background-position: -120px 0px !important;
+}
+#downloads-button:not([disabled="true"], [disabled]):hover #downloads-indicator-icon {
+  background-position: -120px -24px !important;
+}
+#downloads-button:is([disabled="true"], [disabled]) #downloads-indicator-icon {
+  background-position: -120px -48px !important;
+}
+
+/* History Button (col 6: x = -144px) */
+#history-panelmenu > .toolbarbutton-icon {
+  background-position: -144px 0px !important;
+}
+#history-panelmenu:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -144px -24px !important;
+}
+
+/* Bookmarks Button (col 7: x = -168px) */
+#bookmarks-menu-button > .toolbarbutton-icon {
+  background-position: -168px 0px !important;
+}
+#bookmarks-menu-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -168px -24px !important;
+}
+
+/* Print Button (col 8: x = -192px) */
+#print-button > .toolbarbutton-icon {
+  background-position: -192px 0px !important;
+}
+#print-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
+  background-position: -192px -24px !important;
+}
+
+/* ::::: Classic Firefox 1.0 Address Bar (#urlbar) & Go Button ::::: */
+
+#urlbar-container {
+  flex: 1 1 auto !important;
+  min-width: 180px !important;
+  margin: 0 2px !important;
+  padding: 0 !important;
+  align-items: center !important;
+}
+
+#urlbar {
+  min-height: 22px !important;
+  height: 22px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+/* Hide the floating megabar background; apply classic sunken XP border to input-container */
+#urlbar > .urlbar-background {
+  display: none !important;
+}
+
+#urlbar > .urlbar-input-container {
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 0 !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-light-shadow) !important;
+  min-height: 22px !important;
+  height: 22px !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  outline: none !important;
+  align-items: center !important;
+}
+
+/* Prevent megabar expansion when focused/open */
+#urlbar[breakout],
+#urlbar[breakout][breakout-extend] {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 22px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#urlbar[breakout][breakout-extend] > .urlbar-input-container {
+  height: 22px !important;
+  padding: 0 2px !important;
+}
+
+#urlbar-input {
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  color: var(--xp-text-primary) !important;
+}
+
+/* Classic page proxy icon inside urlbar */
+#identity-box {
+  margin-inline-end: 3px !important;
+}
+
+#identity-icon-box,
+#tracking-protection-icon-container {
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 2px !important;
+}
+
+#identity-icon {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Always show classic 1.0 Go Button (Go.png 60x20 sprite: 3 states of 20x20) at right of urlbar */
+#urlbar > .urlbar-input-container > .urlbar-go-button {
+  display: inline-block !important;
+  visibility: visible !important;
+  content: none !important;
+  list-style-image: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  padding: 0 !important;
+  margin: 0 1px !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/Go.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0px 0px !important;
+  cursor: pointer !important;
+}
+
+#urlbar > .urlbar-input-container > .urlbar-go-button:hover {
+  background-position: -20px 0px !important;
+  background-color: transparent !important;
+}
+
+#urlbar > .urlbar-input-container > .urlbar-go-button:hover:active {
+  background-position: -20px 0px !important;
+  transform: translate(1px, 1px);
+}
+
+/* Urlbar autocomplete dropdown popup in classic XP style */
+.urlbarView {
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-3d-dark-shadow) !important;
+  border-radius: 0 !important;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) !important;
+  margin-inline: 0 !important;
+  width: 100% !important;
+}
+
+.urlbarView-row {
+  border-radius: 0 !important;
+  padding-block: 2px !important;
+}
+
+.urlbarView-row[selected] {
+  background-color: var(--xp-highlight-bg) !important;
+  color: var(--xp-text-highlight) !important;
+}
+
+/* ::::: Classic Firefox 1.0 Search Bar (#search-container / #searchbar) ::::: */
+
+#search-container {
+  width: 170px !important;
+  min-width: 130px !important;
+  margin: 0 2px !important;
+  padding: 0 !important;
+  align-items: center !important;
+}
+
+#searchbar {
+  appearance: none !important;
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 0 !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-light-shadow) !important;
+  min-height: 22px !important;
+  height: 22px !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  align-items: center !important;
+}
+
+#searchbar > .searchbar-search-button {
+  padding: 0 3px 0 2px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  align-items: center !important;
+  cursor: pointer !important;
+}
+
+#searchbar .searchbar-search-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin: 0 !important;
+}
+
+#searchbar .searchbar-search-icon-overlay {
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/search-arrow.gif") !important;
+  width: 11px !important;
+  height: 9px !important;
+  margin-inline-start: 1px !important;
+}
+
+#searchbar .searchbar-textbox {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  color: var(--xp-text-primary) !important;
+  padding: 0 2px !important;
+}
+
+/* Keep modern PanelUI / overflow buttons unobtrusive and compact */
+#PanelUI-menu-button {
+  padding: 2px !important;
+  margin: 0 !important;
+}
+
+#PanelUI-menu-button > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+  width: 16px !important;
+  height: 16px !important;
 }
