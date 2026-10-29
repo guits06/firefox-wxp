@@ -4,14 +4,25 @@
 
 /* =======================================================================
  * Firefox 1.0 Sidebar (Bookmarks / History) (sidebar.css)
+ * Reference: toolkit/themes/winstripe/global/global.css (sidebarheader)
  * ======================================================================= */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* Hide modern vertical sidebar launcher container */
+#sidebar-container,
+#sidebar-launcher-splitter {
+  display: none !important;
+}
 
 #sidebar-box {
   background-color: var(--xp-bg-window) !important;
   color: var(--xp-text-primary) !important;
+  border-right: 1px solid var(--xp-3d-shadow) !important;
 }
 
 #sidebar-header {
+  appearance: none !important;
   min-height: 25px !important;
   height: 25px !important;
   padding: 0 4px !important;
@@ -19,4 +30,71 @@
   color: var(--xp-text-primary) !important;
   border-top: 1px solid var(--xp-3d-highlight) !important;
   border-bottom: 1px solid var(--xp-3d-shadow) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  align-items: center !important;
+}
+
+#sidebar-switcher-target {
+  appearance: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+  background: transparent !important;
+  color: var(--xp-text-primary) !important;
+  font-weight: bold !important;
+}
+
+#sidebar-switcher-target:hover {
+  border-color: var(--xp-3d-highlight) var(--xp-3d-shadow) var(--xp-3d-shadow) var(--xp-3d-highlight) !important;
+}
+
+#sidebar-close {
+  appearance: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  padding: 2px !important;
+  margin: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  list-style-image: none !important;
+}
+
+#sidebar-close > .toolbarbutton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/close.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0px 0px !important;
+}
+
+#sidebar-close:hover > .toolbarbutton-icon {
+  background-position: -16px 0px !important;
+}
+
+#sidebar-close:hover:active > .toolbarbutton-icon {
+  background-position: -32px 0px !important;
+}
+
+#sidebar-splitter {
+  appearance: none !important;
+  width: 4px !important;
+  background-color: var(--xp-bg-face) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-shadow) !important;
+}
+
+/* Classic Winstripe Places Tree Folder Icons inside Bookmarks/History Sidebar & Library */
+treechildren::-moz-tree-image(title, container),
+treechildren::-moz-tree-image(title, open),
+treechildren::-moz-tree-image(title, query, hostContainer) {
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/Bookmarks-folder.png") !important;
+}
+
+treechildren::-moz-tree-image(container, queryFolder_toolbar_____) {
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/Bookmarks-toolbar.png") !important;
 }

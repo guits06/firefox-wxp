@@ -2322,7 +2322,7 @@ pref("pdfjs.handleOctetStream", true);
 
 // Is the sidebar positioned ahead of the content browser
 pref("sidebar.position_start", true);
-pref("sidebar.revamp", true);
+pref("sidebar.revamp", false);
 pref("sidebar.animation.enabled", true);
 pref("sidebar.animation.expand-on-hover.duration-ms", 200);
 pref("sidebar.animation.expand-on-hover.delay-duration-ms", 200);
