@@ -83,21 +83,25 @@ xul|toolbarbutton:is([disabled="true"], [disabled]) {
 /* ::::: Menus & Context Popups (Winstripe menu.css / popup.css) ::::: */
 
 xul|menupopup,
-xul|panel[type="arrow"] {
+xul|panel {
   appearance: none !important;
   --panel-background: var(--xp-bg-face) !important;
   --panel-color: var(--xp-text-primary) !important;
   --panel-border-color: var(--xp-3d-dark-shadow) !important;
   --panel-border-radius: 0px !important;
   --panel-padding: 2px !important;
+  --panel-padding-block: 2px !important;
   --panel-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) !important;
   --panel-shadow-margin: 0px !important;
+  --menuitem-border-radius: 0px !important;
+  --menuitem-padding-block: 2px !important;
+  --menuitem-padding-inline: 6px !important;
   font-family: var(--xp-font-family) !important;
   font-size: var(--xp-font-size) !important;
 }
 
 xul|menupopup::part(content),
-xul|panel[type="arrow"]::part(content) {
+xul|panel::part(content) {
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
   border: 1px solid var(--xp-3d-dark-shadow) !important;
@@ -132,11 +136,13 @@ xul|menupopup xul|menu,
 xul|menupopup xul|menuitem {
   appearance: none !important;
   border-radius: 0 !important;
-  padding: 2px 4px !important;
-  min-height: 20px !important;
+  padding: 2px 6px !important;
+  min-height: 19px !important;
   margin: 0 !important;
   color: var(--xp-text-primary) !important;
   background-color: transparent !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
 }
 
 xul|menupopup :is(xul|menu, xul|menuitem)[_moz-menuactive="true"]:not([disabled="true"], [disabled]) {
@@ -144,8 +150,61 @@ xul|menupopup :is(xul|menu, xul|menuitem)[_moz-menuactive="true"]:not([disabled=
   color: var(--xp-text-highlight) !important;
 }
 
+xul|menupopup :is(xul|menu, xul|menuitem)[_moz-menuactive="true"]:not([disabled="true"], [disabled]) > .menu-accel {
+  color: var(--xp-text-highlight) !important;
+}
+
 xul|menupopup :is(xul|menu, xul|menuitem):is([disabled="true"], [disabled]) {
   color: var(--xp-text-disabled) !important;
+  background-color: transparent !important;
+}
+
+/* Classic Winstripe submenu right arrow (Menu-arrow.png) */
+xul|menupopup > xul|menu::after {
+  width: 8px !important;
+  height: 9px !important;
+  background-image: url("chrome://global/skin/xp-classic/Menu-arrow.png") !important;
+  background-size: auto !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+xul|menupopup > xul|menu[_moz-menuactive="true"]:not([disabled="true"], [disabled])::after {
+  background-image: url("chrome://global/skin/xp-classic/Menu-arrow-hover.png") !important;
+}
+
+xul|menupopup > xul|menu:is([disabled="true"], [disabled])::after {
+  background-image: url("chrome://global/skin/xp-classic/Menu-arrow-disabled.png") !important;
+}
+
+/* Replace Linux GTK native checkbox/radio in menus with Winstripe checkmarks & bullets */
+xul|menuitem:is([type="checkbox"], [type="radio"], [checked]) > .menu-icon {
+  appearance: none !important;
+  -moz-default-appearance: none !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: none !important;
+  background-color: transparent !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  content: none !important;
+}
+
+xul|menuitem[type="checkbox"]:is([checked="true"], [checked]) > .menu-icon,
+xul|menuitem:not([type="radio"]):is([checked="true"], [checked]) > .menu-icon {
+  background-image: url("chrome://global/skin/xp-classic/menu-check.gif") !important;
+}
+
+xul|menuitem[type="checkbox"]:is([checked="true"], [checked])[_moz-menuactive="true"]:not([disabled]) > .menu-icon {
+  background-image: url("chrome://global/skin/xp-classic/menu-check-hover.gif") !important;
+}
+
+xul|menuitem[type="radio"]:is([checked="true"], [checked]) > .menu-icon {
+  background-image: url("chrome://global/skin/xp-classic/menu-radio.gif") !important;
+}
+
+xul|menuitem[type="radio"]:is([checked="true"], [checked])[_moz-menuactive="true"]:not([disabled]) > .menu-icon {
+  background-image: url("chrome://global/skin/xp-classic/menu-radio-hover.gif") !important;
 }
 
 xul|menuseparator {
@@ -154,6 +213,37 @@ xul|menuseparator {
   padding: 0 !important;
   border-top: 1px solid var(--xp-3d-shadow) !important;
   border-bottom: 1px solid var(--xp-3d-highlight) !important;
+}
+
+/* Context menu navigation row (#context-navigation) in classic XP style */
+#context-navigation {
+  background-color: var(--xp-bg-face) !important;
+  padding: 1px 2px !important;
+}
+
+#context-navigation > .menuitem-iconic {
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+}
+
+#context-navigation > .menuitem-iconic[_moz-menuactive="true"]:not([disabled="true"], [disabled]) {
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+  border-color: var(--xp-3d-highlight) var(--xp-3d-shadow) var(--xp-3d-shadow) var(--xp-3d-highlight) !important;
+}
+
+/* PanelUI / subview buttons in classic XP style */
+.subviewbutton {
+  appearance: none !important;
+  border-radius: 0 !important;
+  padding: 2px 6px !important;
+  min-height: 20px !important;
+  color: var(--xp-text-primary) !important;
+}
+
+.subviewbutton:not([disabled]):hover {
+  background-color: var(--xp-highlight-bg) !important;
+  color: var(--xp-text-highlight) !important;
 }
 
 /* ::::: Tooltips ::::: */
@@ -204,7 +294,50 @@ html|button:disabled {
   box-shadow: none !important;
 }
 
-/* ::::: Inputs, Textboxes, Menulists, Checkboxes, Radios ::::: */
+/* ::::: Classic XP Checkboxes & Radio Buttons (Winstripe checkbox.css / radio.css) ::::: */
+
+.checkbox-check,
+html|input[type="checkbox"] {
+  appearance: none !important;
+  -moz-default-appearance: none !important;
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  min-height: 13px !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 0 !important;
+  background-color: var(--xp-bg-window) !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-light-shadow) !important;
+}
+
+.checkbox-check[checked],
+html|input[type="checkbox"]:checked {
+  background-image: url("chrome://global/skin/xp-classic/cbox-check.gif") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.radio-check,
+html|input[type="radio"] {
+  appearance: none !important;
+  -moz-default-appearance: none !important;
+  width: 13px !important;
+  height: 13px !important;
+  min-width: 13px !important;
+  min-height: 13px !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 50% !important;
+  background-color: var(--xp-bg-window) !important;
+}
+
+.radio-check[selected],
+html|input[type="radio"]:checked {
+  background-image: url("chrome://global/skin/xp-classic/radio-check.gif") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* ::::: Inputs, Textboxes, Menulists ::::: */
 
 html|input:is([type="text"], [type="search"], [type="url"], [type="number"], :not([type])),
 html|textarea,
@@ -245,6 +378,16 @@ xul|richlistbox {
   background-color: var(--xp-bg-window) !important;
   color: var(--xp-text-primary) !important;
   border: 1px solid var(--xp-input-border) !important;
+}
+
+xul|treechildren::-moz-tree-twisty {
+  list-style-image: url("chrome://global/skin/xp-classic/twisty-clsd.png") !important;
+  width: 9px !important;
+  height: 9px !important;
+}
+
+xul|treechildren::-moz-tree-twisty(open) {
+  list-style-image: url("chrome://global/skin/xp-classic/twisty-open.png") !important;
 }
 
 xul|treechildren::-moz-tree-row(selected),
