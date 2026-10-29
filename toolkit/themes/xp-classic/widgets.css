@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
 /* =======================================================================
  * Windows XP / Winstripe 1.0 Global Toolkit Widgets
  * Replaces GTK native appearance with classic XP 3D/Luna controls
@@ -105,7 +107,9 @@ xul|panel::part(content) {
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
   border: 1px solid var(--xp-3d-dark-shadow) !important;
-  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight), inset -1px -1px 0 var(--xp-3d-shadow) !important;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-3d-highlight),
+    inset -1px -1px 0 var(--xp-3d-shadow) !important;
   border-radius: 0 !important;
   padding: 2px !important;
 }
@@ -268,7 +272,9 @@ html|button:not(.devtools-button, .urlbarView-button) {
   color: var(--xp-text-primary) !important;
   border: 1px solid var(--xp-button-border) !important;
   border-radius: var(--xp-radius-button) !important;
-  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight), inset -1px -1px 0 var(--xp-3d-shadow) !important;
+  box-shadow:
+    inset 1px 1px 0 var(--xp-3d-highlight),
+    inset -1px -1px 0 var(--xp-3d-shadow) !important;
   padding: 2px 10px !important;
   min-height: 22px !important;
   font-family: var(--xp-font-family) !important;

@@ -359,6 +359,7 @@ var CustomizableUIInternal = {
     );
 
     let navbarPlacements = [
+      lazy.sidebarRevampEnabled ? "sidebar-button" : null,
       "back-button",
       "forward-button",
       "stop-reload-button",

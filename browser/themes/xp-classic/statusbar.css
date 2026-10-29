@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens, stylelint-plugin-mozilla/no-has-selector */
+
 /* =======================================================================
  * Firefox 1.0 Bottom Status Bar (statusbar.css)
  * Reference: toolkit/themes/winstripe/global/global.css & progressmeter.css
@@ -110,13 +112,7 @@
 #xp-statusbar-progresschunk {
   height: 100% !important;
   width: 0%;
-  background: repeating-linear-gradient(
-    to right,
-    var(--xp-progress-chunk) 0px,
-    var(--xp-progress-chunk) 6px,
-    transparent 6px,
-    transparent 8px
-  ) !important;
+  background: repeating-linear-gradient(to right, var(--xp-progress-chunk) 0, var(--xp-progress-chunk) 6px, transparent 6px, transparent 8px) !important;
 }
 
 :root:has(.tabbrowser-tab[selected][busy]) #xp-statusbar-progresschunk {
@@ -148,7 +144,17 @@
 }
 
 /* Show broken padlock (Security-broken.png) on mixed/weak/broken security pages */
-:root:has(#identity-box[pageproxystate="valid"]:is(.weakCipher, .mixedDisplayContent, .mixedDisplayContentLoadedActiveBlocked, .certUserOverridden, .certErrorPage, .mixedActiveContent)) #xp-security-icon {
+:root:has(
+    #identity-box[pageproxystate="valid"]:is(
+        .weakCipher,
+        .mixedDisplayContent,
+        .mixedDisplayContentLoadedActiveBlocked,
+        .certUserOverridden,
+        .certErrorPage,
+        .mixedActiveContent
+      )
+  )
+  #xp-security-icon {
   background-image: url("chrome://browser/skin/xp-classic/icons/Security-broken.png") !important;
 }
 

@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
 /* =======================================================================
  * Firefox 1.0 Options / Preferences & In-Content Pages (preferences.css)
  * Reference: browser/themes/winstripe/browser/pref/pref.css & Options.png
@@ -86,17 +88,17 @@
 /* General / Home (col 0: x = 0px) */
 #category-general::before,
 #category-home::before {
-  background-position: 0px 0px;
+  background-position: 0 0;
 }
 #category-general:is(:hover, [selected])::before,
 #category-home:is(:hover, [selected])::before {
-  background-position: 0px -32px;
+  background-position: 0 -32px;
 }
 
 /* Privacy / Passwords (col 1: x = -32px) */
 #category-privacy::before,
 #category-passwords-autofill::before {
-  background-position: -32px 0px;
+  background-position: -32px 0;
 }
 #category-privacy:is(:hover, [selected])::before,
 #category-passwords-autofill:is(:hover, [selected])::before {
@@ -107,7 +109,7 @@
 #category-search::before,
 #category-appearance::before,
 #category-tabs-browsing::before {
-  background-position: -64px 0px;
+  background-position: -64px 0;
 }
 #category-search:is(:hover, [selected])::before,
 #category-appearance:is(:hover, [selected])::before,
@@ -117,7 +119,7 @@
 
 /* Downloads (col 3: x = -96px) */
 #category-downloads::before {
-  background-position: -96px 0px;
+  background-position: -96px 0;
 }
 #category-downloads:is(:hover, [selected])::before {
   background-position: -96px -32px;
@@ -127,7 +129,7 @@
 #category-sync::before,
 #category-accessibility::before,
 #category-more-from-mozilla::before {
-  background-position: -128px 0px;
+  background-position: -128px 0;
 }
 #category-sync:is(:hover, [selected])::before,
 #category-accessibility:is(:hover, [selected])::before,

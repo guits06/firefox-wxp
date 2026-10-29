@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
 /* =======================================================================
  * Firefox 1.0 Navigation Toolbar, Address Bar & Search Bar (navbar.css)
  * ======================================================================= */
@@ -86,35 +88,38 @@
  * Row 0 (0px): Normal, Row 1 (-24px): Hover, Row 2 (-48px): Disabled
  */
 
-#nav-bar :is(
-  #back-button,
-  #forward-button,
-  #stop-button,
-  #reload-button,
-  #home-button,
-  #downloads-button,
-  #history-panelmenu,
-  #bookmarks-menu-button,
-  #print-button,
-  #new-tab-button,
-  #new-window-button
-) {
+#nav-bar
+  :is(
+    #back-button,
+    #forward-button,
+    #stop-button,
+    #reload-button,
+    #home-button,
+    #downloads-button,
+    #history-panelmenu,
+    #bookmarks-menu-button,
+    #print-button,
+    #new-tab-button,
+    #new-window-button
+  ) {
   list-style-image: none !important;
 }
 
-#nav-bar :is(
-  #back-button,
-  #forward-button,
-  #stop-button,
-  #reload-button,
-  #home-button,
-  #downloads-button,
-  #history-panelmenu,
-  #bookmarks-menu-button,
-  #print-button,
-  #new-tab-button,
-  #new-window-button
-) > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack > .toolbarbutton-icon),
+#nav-bar
+  :is(
+    #back-button,
+    #forward-button,
+    #stop-button,
+    #reload-button,
+    #home-button,
+    #downloads-button,
+    #history-panelmenu,
+    #bookmarks-menu-button,
+    #print-button,
+    #new-tab-button,
+    #new-window-button
+  )
+  > :is(.toolbarbutton-icon, .toolbarbutton-badge-stack > .toolbarbutton-icon),
 #downloads-button #downloads-indicator-icon {
   width: 24px !important;
   height: 24px !important;
@@ -127,18 +132,18 @@
 
 /* Back Button (col 0: x = 0px) */
 #back-button > .toolbarbutton-icon {
-  background-position: 0px 0px !important;
+  background-position: 0 0 !important;
 }
 #back-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
-  background-position: 0px -24px !important;
+  background-position: 0 -24px !important;
 }
 #back-button:is([disabled="true"], [disabled]) > .toolbarbutton-icon {
-  background-position: 0px -48px !important;
+  background-position: 0 -48px !important;
 }
 
 /* Forward Button (col 1: x = -24px) */
 #forward-button > .toolbarbutton-icon {
-  background-position: -24px 0px !important;
+  background-position: -24px 0 !important;
 }
 #forward-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -24px -24px !important;
@@ -149,7 +154,7 @@
 
 /* Reload Button (col 3: x = -72px) */
 #reload-button > .toolbarbutton-icon {
-  background-position: -72px 0px !important;
+  background-position: -72px 0 !important;
 }
 #reload-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -72px -24px !important;
@@ -160,7 +165,7 @@
 
 /* Stop Button (col 2: x = -48px) */
 #stop-button > .toolbarbutton-icon {
-  background-position: -48px 0px !important;
+  background-position: -48px 0 !important;
 }
 #stop-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -48px -24px !important;
@@ -176,7 +181,7 @@
 
 /* Home Button (col 4: x = -96px) */
 #home-button > .toolbarbutton-icon {
-  background-position: -96px 0px !important;
+  background-position: -96px 0 !important;
 }
 #home-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -96px -24px !important;
@@ -187,7 +192,7 @@
 
 /* Downloads Button (col 5: x = -120px) */
 #downloads-button #downloads-indicator-icon {
-  background-position: -120px 0px !important;
+  background-position: -120px 0 !important;
 }
 #downloads-button:not([disabled="true"], [disabled]):hover #downloads-indicator-icon {
   background-position: -120px -24px !important;
@@ -198,7 +203,7 @@
 
 /* History Button (col 6: x = -144px) */
 #history-panelmenu > .toolbarbutton-icon {
-  background-position: -144px 0px !important;
+  background-position: -144px 0 !important;
 }
 #history-panelmenu:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -144px -24px !important;
@@ -206,7 +211,7 @@
 
 /* Bookmarks Button (col 7: x = -168px) */
 #bookmarks-menu-button > .toolbarbutton-icon {
-  background-position: -168px 0px !important;
+  background-position: -168px 0 !important;
 }
 #bookmarks-menu-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -168px -24px !important;
@@ -214,7 +219,7 @@
 
 /* Print Button (col 8: x = -192px) */
 #print-button > .toolbarbutton-icon {
-  background-position: -192px 0px !important;
+  background-position: -192px 0 !important;
 }
 #print-button:not([disabled="true"], [disabled]):hover > .toolbarbutton-icon {
   background-position: -192px -24px !important;
@@ -316,17 +321,17 @@
   background-color: transparent !important;
   background-image: url("chrome://browser/skin/xp-classic/icons/Go.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 0px 0px !important;
+  background-position: 0 0 !important;
   cursor: pointer !important;
 }
 
 #urlbar > .urlbar-input-container > .urlbar-go-button:hover {
-  background-position: -20px 0px !important;
+  background-position: -20px 0 !important;
   background-color: transparent !important;
 }
 
 #urlbar > .urlbar-input-container > .urlbar-go-button:hover:active {
-  background-position: -20px 0px !important;
+  background-position: -20px 0 !important;
   transform: translate(1px, 1px);
 }
 

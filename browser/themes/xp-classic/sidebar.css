@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
 /* =======================================================================
  * Firefox 1.0 Sidebar (Bookmarks / History) (sidebar.css)
  * Reference: toolkit/themes/winstripe/global/global.css (sidebarheader)
@@ -69,15 +71,15 @@
   margin: 0 !important;
   background-image: url("chrome://browser/skin/xp-classic/icons/close.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 0px 0px !important;
+  background-position: 0 0 !important;
 }
 
 #sidebar-close:hover > .toolbarbutton-icon {
-  background-position: -16px 0px !important;
+  background-position: -16px 0 !important;
 }
 
 #sidebar-close:hover:active > .toolbarbutton-icon {
-  background-position: -32px 0px !important;
+  background-position: -32px 0 !important;
 }
 
 #sidebar-splitter {

@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
 /* =======================================================================
  * Firefox 1.0 Tab Strip & Classic Attached 3D Tabs (tabs.css)
  * Reference: toolkit/themes/winstripe/global/tabbox.css & browser.css
@@ -89,7 +91,9 @@
   border-left: 1px solid var(--xp-3d-highlight) !important;
   border-right: 1px solid var(--xp-3d-dark-shadow) !important;
   border-bottom: 1px solid var(--xp-bg-face-alt) !important;
-  box-shadow: inset 1px 0 0 var(--xp-3d-highlight), inset -1px 0 0 var(--xp-3d-shadow) !important;
+  box-shadow:
+    inset 1px 0 0 var(--xp-3d-highlight),
+    inset -1px 0 0 var(--xp-3d-shadow) !important;
 }
 
 .tabbrowser-tab > .tab-stack > .tab-content {
@@ -159,13 +163,13 @@
   margin: 0 !important;
   background-image: url("chrome://browser/skin/xp-classic/icons/close.png") !important;
   background-repeat: no-repeat !important;
-  background-position: 0px 0px !important;
+  background-position: 0 0 !important;
 }
 
 #xp-tabs-closebutton:hover > .toolbarbutton-icon {
-  background-position: -16px 0px !important;
+  background-position: -16px 0 !important;
 }
 
 #xp-tabs-closebutton:hover:active > .toolbarbutton-icon {
-  background-position: -32px 0px !important;
+  background-position: -32px 0 !important;
 }
