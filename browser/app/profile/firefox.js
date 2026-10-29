@@ -505,7 +505,7 @@ pref("browser.urlbar.allowSearchSuggestionsForSimpleOrigins", true);
 
 pref("browser.urlbar.deduplication.enabled", true);
 
-pref("browser.urlbar.scotchBonnet.enableOverride", true);
+pref("browser.urlbar.scotchBonnet.enableOverride", false);
 
 pref("browser.urlbar.searchModeSwitcher.skipTabStop", true);
 
@@ -2271,7 +2271,7 @@ pref("browser.aboutwelcome.experimentsGate.minDisplayMs", 3000);
 pref("browser.aboutwelcome.experimentsGate.maxDisplayMs", 8000);
 
 // Global Nova redesign enabled pref
-pref("browser.nova.enabled", true);
+pref("browser.nova.enabled", false);
 
 // Disable singleProfile messaging mitigation (Bug 1963213) for multiProfile feature users
 pref("messaging-system.profile.singleProfileMessaging.disable", true);
@@ -3909,3 +3909,12 @@ pref("distribution.mozillaonline.ignore", true);
 #ifdef XP_MACOSX
   pref("browser.macAppMenu.setAsDefaultShown", false);
 #endif
+
+// Windows XP / Winstripe 1.0 Classic Fork defaults for XFCE / Linux
+pref("browser.tabs.inTitlebar", 0);
+pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+pref("widget.gtk.rounded-bottom-corners.enabled", false);
+pref("widget.gtk.overlay-scrollbars.enabled", false);
+pref("widget.non-native-theme.scrollbar.style", 4);
+pref("widget.non-native-theme.gtk.scrollbar.allow-buttons", true);
+pref("widget.non-native-theme.gtk.scrollbar.round-thumb", false);

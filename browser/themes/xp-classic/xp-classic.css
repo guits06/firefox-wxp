@@ -49,6 +49,14 @@
 }
 
 /* Disable CSD window border-radius and hide custom titlebar controls when using native XFCE titlebar */
+:root,
+:root[customtitlebar],
+:root[customtitlebar] body {
+  border-radius: 0 !important;
+  appearance: none !important;
+  -moz-default-appearance: none !important;
+}
+
 :root:not([customtitlebar]) .titlebar-buttonbox-container,
 :root:not([customtitlebar]) .titlebar-spacer {
   display: none !important;
