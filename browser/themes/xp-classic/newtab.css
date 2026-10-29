@@ -1,0 +1,127 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* stylelint-disable stylelint-plugin-mozilla/use-design-tokens */
+
+/* =======================================================================
+ * Firefox 1.0 / Windows XP Retro Styling for about:newtab and about:home
+ * ======================================================================= */
+
+:root {
+  --newtab-background-color: #ece9d8 !important;
+  --newtab-background-color-secondary: #ece9d8 !important;
+  --newtab-text-primary-color: #000000 !important;
+  --newtab-text-secondary-color: #444444 !important;
+  --newtab-background-card: #ffffff !important;
+  --newtab-primary-action-background: #0a246a !important;
+  --newtab-button-hover-background: #b2d1f5 !important;
+  --newtab-font-family: Tahoma, "MS Shell Dlg-2", "Segoe UI", sans-serif !important;
+}
+
+body.activity-stream,
+.activity-stream {
+  background-color: #ece9d8 !important;
+  background-image: none !important;
+  color: #000000 !important;
+  font-family: Tahoma, "MS Shell Dlg-2", "Segoe UI", sans-serif !important;
+}
+
+/* Classic 1.0 Centered Logo & Wordmark */
+.logo-and-wordmark {
+  align-items: center !important;
+  margin-block-end: 24px !important;
+}
+
+.logo-and-wordmark .logo {
+  background-image: url("chrome://branding/content/about-logo.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  height: 80px !important;
+  width: 80px !important;
+  filter: drop-shadow(1px 2px 3px rgba(0, 0, 0, 0.25)) !important;
+}
+
+.logo-and-wordmark .wordmark {
+  color: #c84600 !important;
+  fill: #c84600 !important;
+  font-family: Tahoma, "Trebuchet MS", sans-serif !important;
+  font-size: 28px !important;
+  font-weight: bold !important;
+  letter-spacing: -0.5px !important;
+  height: 80px !important;
+  margin-inline-start: 12px !important;
+}
+
+/* Windows XP Luna Search Box (Sunken 3D Border) */
+.search-wrapper {
+  margin-block: 20px !important;
+}
+
+.search-inner-wrapper,
+.search-handoff-button,
+moz-urlbar {
+  background-color: #ffffff !important;
+  border: 2px solid !important;
+  border-color: #7f9db9 #d6d3ce #d6d3ce #7f9db9 !important;
+  border-radius: 2px !important;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+  color: #000000 !important;
+  font-family: Tahoma, sans-serif !important;
+}
+
+.search-inner-wrapper:focus-within,
+.search-handoff-button:focus,
+moz-urlbar[focused] {
+  border-color: #0a246a !important;
+  outline: none !important;
+}
+
+/* Top Sites / Shortcuts in Windows XP Explorer Style */
+.top-sites-list .top-site-outer {
+  border: 1px solid transparent !important;
+  border-radius: 3px !important;
+  padding: 8px !important;
+  transition: none !important;
+}
+
+.top-sites-list .top-site-outer:hover,
+.top-sites-list .top-site-outer.active {
+  background-color: #b2d1f5 !important;
+  border: 1px solid #316ac5 !important;
+}
+
+.top-sites-list .tile {
+  background-color: #ffffff !important;
+  border: 1px solid #7f9db9 !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15) !important;
+}
+
+.top-sites-list .title {
+  color: #000000 !important;
+  font-family: Tahoma, sans-serif !important;
+  font-size: 11px !important;
+}
+
+/* Classic XP Cards & Sections */
+.ds-card,
+.card-outer,
+section.collapsible-section {
+  background-color: #ffffff !important;
+  border: 1px solid #919b9c !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Personalize / Customization Buttons */
+.personalize-button {
+  border: 1px solid transparent !important;
+  border-radius: 3px !important;
+}
+
+.personalize-button:hover {
+  background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 50%, #d8d4c8 100%) !important;
+  border: 1px solid #003c74 !important;
+}

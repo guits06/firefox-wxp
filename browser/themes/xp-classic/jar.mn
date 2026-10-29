@@ -11,6 +11,7 @@ browser.jar:
   skin/classic/browser/xp-classic/statusbar.css                (statusbar.css)
   skin/classic/browser/xp-classic/sidebar.css                  (sidebar.css)
   skin/classic/browser/xp-classic/preferences.css              (preferences.css)
+  skin/classic/browser/xp-classic/newtab.css                   (newtab.css)
   skin/classic/browser/xp-classic/icons/Toolbar.png            (icons/Toolbar.png)
   skin/classic/browser/xp-classic/icons/Toolbar-small.png      (icons/Toolbar-small.png)
   skin/classic/browser/xp-classic/icons/Go.png                 (icons/Go.png)
