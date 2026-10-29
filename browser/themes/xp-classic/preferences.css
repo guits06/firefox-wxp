@@ -1,0 +1,20 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Firefox 1.0 Options / Preferences & In-Content Pages (preferences.css)
+ * ======================================================================= */
+
+@import url("chrome://global/skin/xp-classic/variables.css");
+
+:root {
+  --in-content-page-background: var(--xp-bg-face) !important;
+  --in-content-page-color: var(--xp-text-primary) !important;
+  --in-content-box-background: var(--xp-bg-window) !important;
+  --in-content-box-border-color: var(--xp-input-border) !important;
+  --in-content-primary-button-background: #f3f1e8 !important;
+  --in-content-primary-button-text-color: var(--xp-text-primary) !important;
+  --in-content-button-background: #f3f1e8 !important;
+  --in-content-button-text-color: var(--xp-text-primary) !important;
+}

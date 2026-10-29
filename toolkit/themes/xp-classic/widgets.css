@@ -1,0 +1,254 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Windows XP / Winstripe 1.0 Global Toolkit Widgets
+ * Replaces GTK native appearance with classic XP 3D/Luna controls
+ * ======================================================================= */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+window,
+page,
+dialog,
+wizard {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+/* ::::: Toolbars & Toolboxes ::::: */
+
+xul|toolbox {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+}
+
+xul|toolbar,
+xul|menubar {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border-top: 1px solid var(--xp-3d-highlight);
+  border-bottom: 1px solid var(--xp-3d-shadow);
+}
+
+xul|toolbarseparator {
+  appearance: none !important;
+  margin: 2px 3px !important;
+  width: 2px !important;
+  border-left: 1px solid var(--xp-3d-shadow) !important;
+  border-right: 1px solid var(--xp-3d-highlight) !important;
+  background: transparent !important;
+}
+
+/* ::::: Classic 3D Toolbar Buttons (Winstripe toolbarbutton.css) ::::: */
+
+xul|toolbarbutton {
+  appearance: none !important;
+  border: 1px solid transparent;
+  border-radius: 0 !important;
+  background-color: transparent;
+  color: var(--xp-text-primary);
+  font-family: var(--xp-font-family);
+  font-size: var(--xp-font-size);
+}
+
+xul|toolbarbutton:not([disabled="true"], [disabled]):hover {
+  border-top-color: var(--xp-3d-highlight) !important;
+  border-left-color: var(--xp-3d-highlight) !important;
+  border-right-color: var(--xp-3d-shadow) !important;
+  border-bottom-color: var(--xp-3d-shadow) !important;
+  background-color: transparent !important;
+}
+
+xul|toolbarbutton:not([disabled="true"], [disabled]):is(:hover:active, [open="true"], [checked="true"]) {
+  border-top-color: var(--xp-3d-shadow) !important;
+  border-left-color: var(--xp-3d-shadow) !important;
+  border-right-color: var(--xp-3d-highlight) !important;
+  border-bottom-color: var(--xp-3d-highlight) !important;
+}
+
+xul|toolbarbutton:is([disabled="true"], [disabled]) {
+  border-color: transparent !important;
+  color: var(--xp-text-disabled) !important;
+  opacity: 1 !important;
+}
+
+/* ::::: Menus & Context Popups (Winstripe menu.css / popup.css) ::::: */
+
+xul|menupopup,
+xul|panel[type="arrow"] {
+  appearance: none !important;
+  --panel-background: var(--xp-bg-face) !important;
+  --panel-color: var(--xp-text-primary) !important;
+  --panel-border-color: var(--xp-3d-dark-shadow) !important;
+  --panel-border-radius: 0px !important;
+  --panel-padding: 2px !important;
+  --panel-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25) !important;
+  --panel-shadow-margin: 0px !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+xul|menupopup::part(content),
+xul|panel[type="arrow"]::part(content) {
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-3d-dark-shadow) !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight), inset -1px -1px 0 var(--xp-3d-shadow) !important;
+  border-radius: 0 !important;
+  padding: 2px !important;
+}
+
+xul|menubar > xul|menu {
+  appearance: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 2px 6px !important;
+  margin: 1px 0 !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+}
+
+xul|menubar > xul|menu:is([_moz-menuactive="true"], :hover) {
+  border-color: var(--xp-3d-highlight) var(--xp-3d-shadow) var(--xp-3d-shadow) var(--xp-3d-highlight) !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+}
+
+xul|menubar > xul|menu[open="true"] {
+  border-color: var(--xp-3d-shadow) var(--xp-3d-highlight) var(--xp-3d-highlight) var(--xp-3d-shadow) !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+}
+
+xul|menupopup xul|menu,
+xul|menupopup xul|menuitem {
+  appearance: none !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+  min-height: 20px !important;
+  margin: 0 !important;
+  color: var(--xp-text-primary) !important;
+  background-color: transparent !important;
+}
+
+xul|menupopup :is(xul|menu, xul|menuitem)[_moz-menuactive="true"]:not([disabled="true"], [disabled]) {
+  background-color: var(--xp-highlight-bg) !important;
+  color: var(--xp-text-highlight) !important;
+}
+
+xul|menupopup :is(xul|menu, xul|menuitem):is([disabled="true"], [disabled]) {
+  color: var(--xp-text-disabled) !important;
+}
+
+xul|menuseparator {
+  appearance: none !important;
+  margin: 2px 2px !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+}
+
+/* ::::: Tooltips ::::: */
+
+xul|tooltip {
+  appearance: none !important;
+  background-color: var(--xp-bg-tooltip) !important;
+  color: var(--xp-text-tooltip) !important;
+  border: 1px solid #000000 !important;
+  border-radius: 0 !important;
+  padding: 2px 4px !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+/* ::::: Push Buttons (Luna / Winstripe style) ::::: */
+
+xul|button,
+html|button:not(.devtools-button, .urlbarView-button) {
+  appearance: none !important;
+  background: linear-gradient(to bottom, #ffffff 0%, #f3f1e8 45%, #e2decb 100%) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-button-border) !important;
+  border-radius: var(--xp-radius-button) !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight), inset -1px -1px 0 var(--xp-3d-shadow) !important;
+  padding: 2px 10px !important;
+  min-height: 22px !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+xul|button:not([disabled="true"], [disabled]):hover,
+html|button:not(:disabled, .devtools-button, .urlbarView-button):hover {
+  box-shadow: inset 0 0 0 2px var(--xp-button-hover-accent) !important;
+}
+
+xul|button:not([disabled="true"], [disabled]):hover:active,
+html|button:not(:disabled, .devtools-button, .urlbarView-button):hover:active {
+  background: #e1ded0 !important;
+  box-shadow: inset 1px 1px 1px var(--xp-3d-shadow) !important;
+}
+
+xul|button:is([disabled="true"], [disabled]),
+html|button:disabled {
+  background: #f5f4ea !important;
+  border-color: #c9c7ba !important;
+  color: var(--xp-text-disabled) !important;
+  box-shadow: none !important;
+}
+
+/* ::::: Inputs, Textboxes, Menulists, Checkboxes, Radios ::::: */
+
+html|input:is([type="text"], [type="search"], [type="url"], [type="number"], :not([type])),
+html|textarea,
+xul|search-textbox {
+  appearance: none !important;
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 0 !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-light-shadow) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+xul|menulist,
+html|select {
+  appearance: none !important;
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-input-border) !important;
+  border-radius: 0 !important;
+  padding: 1px 4px !important;
+  min-height: 21px !important;
+}
+
+/* ::::: Splitters & Trees ::::: */
+
+xul|splitter {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-shadow) !important;
+}
+
+xul|tree,
+xul|richlistbox {
+  appearance: none !important;
+  background-color: var(--xp-bg-window) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-input-border) !important;
+}
+
+xul|treechildren::-moz-tree-row(selected),
+xul|richlistitem[selected="true"] {
+  background-color: var(--xp-highlight-bg) !important;
+  color: var(--xp-text-highlight) !important;
+}

@@ -1,0 +1,19 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Firefox 1.0 Bottom Status Bar (statusbar.css)
+ * ======================================================================= */
+
+#xp-status-bar {
+  appearance: none !important;
+  min-height: var(--xp-statusbar-height) !important;
+  height: var(--xp-statusbar-height) !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}

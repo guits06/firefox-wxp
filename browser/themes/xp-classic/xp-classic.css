@@ -1,0 +1,55 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Firefox 1.0 (Winstripe / Windows XP) Master Browser Theme Stylesheet
+ * ======================================================================= */
+
+@import url("chrome://browser/skin/xp-classic/menubar.css");
+@import url("chrome://browser/skin/xp-classic/navbar.css");
+@import url("chrome://browser/skin/xp-classic/bookmarksbar.css");
+@import url("chrome://browser/skin/xp-classic/tabs.css");
+@import url("chrome://browser/skin/xp-classic/statusbar.css");
+@import url("chrome://browser/skin/xp-classic/sidebar.css");
+
+/* Classic 1.0 Toolbar Ordering inside #navigator-toolbox:
+ * 1. Menu Bar (#toolbar-menubar)
+ * 2. Navigation Toolbar (#nav-bar)
+ * 3. Bookmarks Toolbar (#PersonalToolbar)
+ * 4. Tab Strip (#TabsToolbar) — placed at the bottom of the toolbox
+ */
+#navigator-toolbox {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border-bottom: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#toolbar-menubar {
+  order: 1 !important;
+}
+
+#nav-bar {
+  order: 2 !important;
+}
+
+#PersonalToolbar {
+  order: 3 !important;
+}
+
+#TabsToolbar {
+  order: 4 !important;
+}
+
+#notifications-toolbar {
+  order: 5 !important;
+}
+
+/* Disable CSD window border-radius and hide custom titlebar controls when using native XFCE titlebar */
+:root:not([customtitlebar]) .titlebar-buttonbox-container,
+:root:not([customtitlebar]) .titlebar-spacer {
+  display: none !important;
+}

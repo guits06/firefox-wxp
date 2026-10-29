@@ -1,0 +1,99 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Centralized Windows XP (Luna / Winstripe 1.0) Design Tokens & Variables
+ * ======================================================================= */
+
+:root,
+window,
+dialog,
+page,
+menupopup,
+panel {
+  /* Force classic XP light color scheme on chrome elements regardless of GTK dark mode */
+  color-scheme: light !important;
+
+  /* Core Windows XP Luna / Winstripe surface colors */
+  --xp-bg-face: #ece9d8;
+  --xp-bg-face-alt: #f5f4ea;
+  --xp-bg-face-hover: #f3f1e6;
+  --xp-bg-face-active: #e3dfd0;
+  --xp-bg-window: #ffffff;
+  --xp-bg-Popup: #ffffff;
+  --xp-bg-tooltip: #ffffe1;
+
+  /* Text colors */
+  --xp-text-primary: #000000;
+  --xp-text-disabled: #aca899;
+  --xp-text-url-comment: #555566;
+  --xp-text-highlight: #ffffff;
+  --xp-text-tooltip: #000000;
+
+  /* Selection / Highlight (Windows XP Luna Blue) */
+  --xp-highlight-bg: #316ac5;
+  --xp-highlight-border: #1941a5;
+  --xp-progress-chunk: #28b62c;
+
+  /* 3D bevel colors (ThreeDHighlight, ThreeDLightShadow, ThreeDShadow, ThreeDDarkShadow) */
+  --xp-3d-highlight: #ffffff;
+  --xp-3d-light-shadow: #f1efe2;
+  --xp-3d-shadow: #aca899;
+  --xp-3d-dark-shadow: #716f64;
+
+  /* Luna control & input borders */
+  --xp-input-border: #7f9db9;
+  --xp-button-border: #003c74;
+  --xp-button-hover-accent: #e68b2c;
+  --xp-tab-active-accent: #e68b2c;
+  --xp-separator-shadow: #aca899;
+  --xp-separator-highlight: #ffffff;
+
+  /* Typography (Windows XP Tahoma 8pt / 11px with Linux fallbacks) */
+  --xp-font-family: "Tahoma", "MS Sans Serif", "DejaVu Sans", "Liberation Sans", sans-serif;
+  --xp-font-size: 11px;
+
+  /* Classic Geometry & Spacing */
+  --xp-radius-none: 0px;
+  --xp-radius-tab: 2px;
+  --xp-radius-button: 3px;
+  --xp-menubar-height: 22px;
+  --xp-navbar-height: 36px;
+  --xp-bookmarksbar-height: 24px;
+  --xp-tabbar-height: 25px;
+  --xp-statusbar-height: 22px;
+  --xp-urlbar-height: 22px;
+
+  /* Override modern Photon/Proton/Acorn tokens globally */
+  --toolbar-bgcolor: var(--xp-bg-face) !important;
+  --toolbar-color: var(--xp-text-primary) !important;
+  --toolbar-field-background-color: var(--xp-bg-window) !important;
+  --toolbar-field-color: var(--xp-text-primary) !important;
+  --toolbar-field-border-color: var(--xp-input-border) !important;
+  --toolbar-field-focus-background-color: var(--xp-bg-window) !important;
+  --toolbar-field-focus-color: var(--xp-text-primary) !important;
+  --toolbar-field-focus-border-color: var(--xp-input-border) !important;
+  --lwt-accent-color: var(--xp-bg-face) !important;
+  --lwt-text-color: var(--xp-text-primary) !important;
+  --arrowpanel-background: var(--xp-bg-face) !important;
+  --arrowpanel-color: var(--xp-text-primary) !important;
+  --arrowpanel-border-color: var(--xp-3d-dark-shadow) !important;
+  --arrowpanel-border-radius: 0px !important;
+  --panel-background: var(--xp-bg-face) !important;
+  --panel-color: var(--xp-text-primary) !important;
+  --panel-border-color: var(--xp-3d-dark-shadow) !important;
+  --panel-border-radius: 0px !important;
+  --border-radius-small: 0px !important;
+  --border-radius-medium: 0px !important;
+  --border-radius-large: 0px !important;
+  --button-border-radius: 2px !important;
+  --toolbarbutton-border-radius: 0px !important;
+  --toolbarbutton-hover-background: transparent !important;
+  --toolbarbutton-active-background: transparent !important;
+  --tab-border-radius: 0px !important;
+  --tab-min-height: 22px !important;
+  --urlbar-min-height: 22px !important;
+  --urlbar-height: 22px !important;
+  --urlbar-container-height: 26px !important;
+}

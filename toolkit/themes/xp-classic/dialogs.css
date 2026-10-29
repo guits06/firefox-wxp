@@ -1,0 +1,63 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/* =======================================================================
+ * Windows XP / Winstripe 1.0 Dialogs, Tabboxes & Groupboxes
+ * ======================================================================= */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+xul|dialog {
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  padding: 8px 10px 10px 8px;
+}
+
+xul|groupbox,
+html|fieldset {
+  appearance: none !important;
+  border: 1px solid var(--xp-3d-shadow) !important;
+  border-radius: 3px !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight) !important;
+  background-color: transparent !important;
+  margin: 6px 4px !important;
+  padding: 6px 8px !important;
+}
+
+/* Classic dialog tabboxes (Page Info, Bookmark Properties, etc.) */
+xul|tabbox:not(#tabbrowser-tabbox) > xul|tabs {
+  border-bottom: 1px solid var(--xp-3d-shadow) !important;
+}
+
+xul|tabbox:not(#tabbrowser-tabbox) xul|tab {
+  appearance: none !important;
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border-top: 2px solid var(--xp-3d-highlight) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-dark-shadow) !important;
+  border-bottom: 1px solid var(--xp-3d-shadow) !important;
+  border-top-left-radius: 2px !important;
+  border-top-right-radius: 2px !important;
+  padding: 2px 8px !important;
+  margin-top: 2px !important;
+}
+
+xul|tabbox:not(#tabbrowser-tabbox) xul|tab[selected="true"] {
+  background-color: var(--xp-bg-face-alt) !important;
+  border-top: 2px solid var(--xp-tab-active-accent) !important;
+  border-bottom-color: transparent !important;
+  margin-top: 0 !important;
+  font-weight: bold !important;
+}
+
+xul|tabbox:not(#tabbrowser-tabbox) > xul|tabpanels {
+  appearance: none !important;
+  background-color: var(--xp-bg-face-alt) !important;
+  color: var(--xp-text-primary) !important;
+  border: 1px solid var(--xp-3d-shadow) !important;
+  border-top: none !important;
+  padding: 8px !important;
+}

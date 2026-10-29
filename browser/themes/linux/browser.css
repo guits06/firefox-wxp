@@ -4,6 +4,7 @@
 
 @import url("chrome://browser/skin/browser-shared.css");
 @import url("chrome://browser/skin/contextmenu.css");
+@import url("chrome://browser/skin/xp-classic/xp-classic.css");
 
 /**
  * We still want to do some of the tweaks that browser-colors does, like

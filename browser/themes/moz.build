@@ -30,7 +30,7 @@ toolkit = CONFIG["MOZ_WIDGET_TOOLKIT"]
 if toolkit == "cocoa":
     DIRS += ["osx"]
 elif toolkit == "gtk":
-    DIRS += ["linux"]
+    DIRS += ["linux", "xp-classic"]
 else:
     DIRS += ["windows"]
 
