@@ -6,12 +6,92 @@
  * Firefox 1.0 Menu Bar & Throbber (menubar.css)
  * ======================================================================= */
 
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
 #toolbar-menubar {
   min-height: var(--xp-menubar-height) !important;
+  height: var(--xp-menubar-height) !important;
   padding: 1px 2px !important;
   border-top: none !important;
   border-bottom: 1px solid var(--xp-3d-shadow) !important;
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
   align-items: center !important;
+}
+
+#menubar-items {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+#main-menubar {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#main-menubar > xul|menu {
+  appearance: none !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  padding: 2px 5px 2px 7px !important;
+  margin: 1px 0 !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  color: var(--xp-text-primary) !important;
+  background-color: transparent !important;
+}
+
+#main-menubar > xul|menu:is([_moz-menuactive="true"], :hover):not([open="true"]) {
+  border-top: 1px solid var(--xp-3d-highlight) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-shadow) !important;
+  border-bottom: 1px solid var(--xp-3d-shadow) !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+}
+
+#main-menubar > xul|menu[open="true"] {
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-left: 1px solid var(--xp-3d-shadow) !important;
+  border-right: 1px solid var(--xp-3d-highlight) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+}
+
+/* Hide Window menu on Linux to match Firefox 1.0 menu bar (File, Edit, View, Go/History, Bookmarks, Tools, Help) */
+#windowMenu {
+  display: none !important;
+}
+
+/* Classic Firefox 1.0 Throbber on the right of the Menu Bar */
+#throbber-box {
+  margin: 0 4px !important;
+  padding: 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#navigator-throbber {
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background-color: transparent !important;
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/Throbber-small.png") !important;
+}
+
+#navigator-toolbox:has(.tabbrowser-tab[selected][busy]) #navigator-throbber,
+#navigator-throbber[busy="true"] {
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/Throbber-small.gif") !important;
+  opacity: 0.75;
 }

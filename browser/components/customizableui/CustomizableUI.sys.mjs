@@ -400,7 +400,7 @@ var CustomizableUIInternal = {
         {
           type: CustomizableUI.TYPE_TOOLBAR,
           defaultPlacements: ["menubar-items"],
-          defaultCollapsed: true,
+          defaultCollapsed: false,
         },
         true
       );

@@ -10,7 +10,6 @@
            class="browser-toolbar browser-titlebar"
            customizable="true"
            mode="icons"
-           autohide="true"
            context="toolbar-context-menu">
     <toolbaritem id="menubar-items" align="center">
 # The entire main menubar is placed into browser-menubar.inc.xhtml, so that it
@@ -18,6 +17,9 @@
 #include browser-menubar.inc.xhtml
     </toolbaritem>
     <spacer flex="1" skipintoolbarset="true" style="order: 1000;"/>
+    <toolbaritem id="throbber-box" align="center" pack="center" skipintoolbarset="true" style="order: 1001;">
+      <image id="navigator-throbber" role="presentation"/>
+    </toolbaritem>
 #include titlebar-items.inc.xhtml
   </toolbar>
 
