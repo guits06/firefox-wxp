@@ -3,14 +3,169 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /* =======================================================================
- * Firefox 1.0 Tab Strip & Classic Tabs (tabs.css)
+ * Firefox 1.0 Tab Strip & Classic Attached 3D Tabs (tabs.css)
+ * Reference: toolkit/themes/winstripe/global/tabbox.css & browser.css
  * ======================================================================= */
 
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+:root {
+  --tab-min-height: 22px !important;
+  --tabstrip-min-height: 25px !important;
+  --tab-margin-block: 0px !important;
+  --tab-border-radius: 0px !important;
+}
+
 #TabsToolbar {
-  min-height: var(--xp-tabbar-height) !important;
-  padding: 0 !important;
+  appearance: none !important;
+  min-height: 26px !important;
+  height: 26px !important;
+  padding: 2px 2px 0 2px !important;
   border-top: 1px solid var(--xp-3d-highlight) !important;
-  border-bottom: 2px solid var(--xp-3d-shadow) !important;
-  background-color: var(--xp-bg-face) !important;
+  border-bottom: 1px solid var(--xp-3d-shadow) !important;
+  background-color: #dcd8c6 !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/tabstrip-bottom.png") !important;
+  background-repeat: repeat-x !important;
+  background-position: bottom left !important;
   color: var(--xp-text-primary) !important;
+}
+
+#TabsToolbar > .toolbar-items,
+#TabsToolbar-customization-target,
+#tabbrowser-tabs,
+#tabbrowser-arrowscrollbox {
+  min-height: 24px !important;
+  height: 24px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* Remove inner border and modern spacing from tabbrowser-tabs */
+#tabbrowser-tabs {
+  --tab-min-height: 22px !important;
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+/* ::::: Classic Attached Winstripe Tab (.tabbrowser-tab) ::::: */
+
+.tabbrowser-tab {
+  appearance: none !important;
+  min-height: 22px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* Eliminate Proton floating pill background; turn .tab-background into the 3D tab surface */
+.tabbrowser-tab > .tab-stack > .tab-background {
+  appearance: none !important;
+  margin: 2px 0 0 0 !important;
+  min-height: 21px !important;
+  border-radius: 2px 2px 0 0 !important;
+  outline: none !important;
+  box-shadow: inset 1px 1px 0 var(--xp-3d-highlight) !important;
+  border-top: 1px solid var(--xp-3d-highlight) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-dark-shadow) !important;
+  border-bottom: 1px solid var(--xp-3d-shadow) !important;
+  background: var(--xp-bg-face) !important;
+}
+
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected], [multiselected]) {
+  background: var(--xp-bg-face-hover) !important;
+  border-top: 2px solid var(--xp-tab-active-accent) !important;
+}
+
+/* Selected tab: taller (margin-top: 0), bold text, open bottom border connecting to content */
+.tabbrowser-tab[selected] > .tab-stack > .tab-background,
+.tabbrowser-tab > .tab-stack > .tab-background:is([selected], [multiselected]) {
+  margin: 0 !important;
+  min-height: 24px !important;
+  background: var(--xp-bg-face-alt) !important;
+  border-top: 2px solid var(--xp-tab-active-accent) !important;
+  border-left: 1px solid var(--xp-3d-highlight) !important;
+  border-right: 1px solid var(--xp-3d-dark-shadow) !important;
+  border-bottom: 1px solid var(--xp-bg-face-alt) !important;
+  box-shadow: inset 1px 0 0 var(--xp-3d-highlight), inset -1px 0 0 var(--xp-3d-shadow) !important;
+}
+
+.tabbrowser-tab > .tab-stack > .tab-content {
+  padding: 1px 6px 1px 6px !important;
+  margin-top: 2px !important;
+  color: var(--xp-text-primary) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+}
+
+.tabbrowser-tab[selected] > .tab-stack > .tab-content {
+  margin-top: 0 !important;
+  padding: 1px 6px 2px 6px !important;
+  font-weight: bold !important;
+  color: var(--xp-text-primary) !important;
+}
+
+/* Classic 1.0 busy tab throbber icon */
+.tab-throbber[busy] {
+  width: 16px !important;
+  height: 16px !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/Throbber-small.gif") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  opacity: 0.75 !important;
+}
+
+.tab-throbber[busy]::before {
+  display: none !important;
+}
+
+/* Classic 1.0 had a single close button at the far right of the tab strip instead of per-tab X buttons */
+.tabbrowser-tab .tab-close-button {
+  display: none !important;
+}
+
+/* Hide modern new-tab '+' button inside the scrollbox and smart-window buttons to match 1.0 */
+#tabs-newtab-button,
+#TabsToolbar #new-tab-button,
+#TabsToolbar #alltabs-button,
+#TabsToolbar #smartwindow-group-tabs-button,
+#TabsToolbar #ai-window-toggle {
+  display: none !important;
+}
+
+/* Classic 1.0 Far-Right Tab Strip Close Button (close.png 48x16 sprite: 3 states of 16x16) */
+#xp-tabs-closebutton {
+  appearance: none !important;
+  display: inline-flex !important;
+  align-self: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
+  padding: 2px !important;
+  margin: 0 2px !important;
+  border: none !important;
+  background-color: transparent !important;
+  list-style-image: none !important;
+  cursor: pointer !important;
+}
+
+#xp-tabs-closebutton > .toolbarbutton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-image: url("chrome://browser/skin/xp-classic/icons/close.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: 0px 0px !important;
+}
+
+#xp-tabs-closebutton:hover > .toolbarbutton-icon {
+  background-position: -16px 0px !important;
+}
+
+#xp-tabs-closebutton:hover:active > .toolbarbutton-icon {
+  background-position: -32px 0px !important;
 }
