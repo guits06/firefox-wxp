@@ -150,6 +150,23 @@
 
 #include browser-box.inc.xhtml
 
+  <hbox id="xp-status-bar" class="chromeclass-status">
+    <hbox id="xp-statusbar-display" class="xp-statusbarpanel" flex="1" align="center">
+      <label id="xp-statusbar-default-label" value="Done" crop="end"/>
+    </hbox>
+    <hbox id="xp-statusbar-progresspanel" class="xp-statusbarpanel" align="center">
+      <box id="xp-statusbar-progressmeter">
+        <box id="xp-statusbar-progresschunk"/>
+      </box>
+    </hbox>
+    <hbox id="xp-security-button" class="xp-statusbarpanel" align="center">
+      <image id="xp-security-icon" role="presentation"/>
+    </hbox>
+    <hbox id="xp-page-report-button" class="xp-statusbarpanel" align="center">
+      <image id="xp-page-report-icon" role="presentation"/>
+    </hbox>
+  </hbox>
+
   <html:template id="customizationPanel">
     <box id="customization-container" flex="1" hidden="true">
 #include ../../components/customizableui/content/customizeMode.inc.xhtml

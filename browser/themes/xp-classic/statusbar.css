@@ -4,16 +4,155 @@
 
 /* =======================================================================
  * Firefox 1.0 Bottom Status Bar (statusbar.css)
+ * Reference: toolkit/themes/winstripe/global/global.css & progressmeter.css
  * ======================================================================= */
+
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
 
 #xp-status-bar {
   appearance: none !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: stretch !important;
   min-height: var(--xp-statusbar-height) !important;
   height: var(--xp-statusbar-height) !important;
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
   border-top: 1px solid var(--xp-3d-shadow) !important;
   border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  padding: 1px 2px !important;
   font-family: var(--xp-font-family) !important;
   font-size: var(--xp-font-size) !important;
+}
+
+/* Hide in DOM fullscreen or popup windows */
+:root:is([inDOMFullscreen], [inFullscreen], [chromehidden~="status"]) #xp-status-bar {
+  display: none !important;
+}
+
+.xp-statusbarpanel {
+  appearance: none !important;
+  display: flex !important;
+  align-items: center !important;
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-left: 1px solid var(--xp-3d-shadow) !important;
+  border-right: 1px solid var(--xp-3d-highlight) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  padding: 0 4px !important;
+  margin-inline-end: 2px !important;
+  min-height: 18px !important;
+}
+
+#xp-statusbar-display {
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
+}
+
+#xp-statusbar-default-label {
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--xp-text-primary) !important;
+}
+
+/* Hide "Done" when live #statuspanel is active or when a tab is busy */
+:root:has(#statuspanel:not([hidden], [inactive])) #xp-statusbar-default-label,
+:root:has(.tabbrowser-tab[selected][busy]) #xp-statusbar-default-label {
+  visibility: hidden !important;
+}
+
+/* Dock live #statuspanel into the left compartment of #xp-status-bar */
+#statuspanel:not([hidden]) {
+  position: fixed !important;
+  bottom: 2px !important;
+  left: 4px !important;
+  right: auto !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: calc(100% - 190px) !important;
+  z-index: 2147483647 !important;
+  pointer-events: none !important;
+}
+
+#statuspanel-label {
+  background-color: var(--xp-bg-face) !important;
+  color: var(--xp-text-primary) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 2px !important;
+  margin: 0 !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  box-shadow: none !important;
+}
+
+/* ::::: Classic Status Bar Progress Meter (progressmeter.css) ::::: */
+
+#xp-statusbar-progresspanel {
+  width: 112px !important;
+  min-width: 112px !important;
+  justify-content: center !important;
+  padding: 1px 3px !important;
+}
+
+#xp-statusbar-progressmeter {
+  width: 100% !important;
+  height: 12px !important;
+  background-color: var(--xp-bg-face) !important;
+  border-top: 1px solid var(--xp-3d-shadow) !important;
+  border-left: 1px solid var(--xp-3d-shadow) !important;
+  border-right: 1px solid var(--xp-3d-highlight) !important;
+  border-bottom: 1px solid var(--xp-3d-highlight) !important;
+  padding: 1px !important;
+  overflow: hidden !important;
+}
+
+#xp-statusbar-progresschunk {
+  height: 100% !important;
+  width: 0%;
+  background: repeating-linear-gradient(
+    to right,
+    var(--xp-progress-chunk) 0px,
+    var(--xp-progress-chunk) 6px,
+    transparent 6px,
+    transparent 8px
+  ) !important;
+}
+
+:root:has(.tabbrowser-tab[selected][busy]) #xp-statusbar-progresschunk {
+  width: 65%;
+  transition: width 250ms ease-out;
+}
+
+/* ::::: Classic Security Lock & Popup Blocker Status Panels ::::: */
+
+#xp-security-button,
+#xp-page-report-button {
+  width: 24px !important;
+  min-width: 24px !important;
+  justify-content: center !important;
+  padding: 0 2px !important;
+}
+
+#xp-security-icon,
+#xp-page-report-icon {
+  width: 16px !important;
+  height: 16px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* Show classic gold padlock (Secure.png) on verified HTTPS pages */
+:root:has(#identity-box[pageproxystate="valid"]:is(.verifiedDomain, .mixedActiveBlocked)) #xp-security-icon {
+  background-image: url("chrome://browser/skin/xp-classic/icons/Secure.png") !important;
+}
+
+/* Show broken padlock (Security-broken.png) on mixed/weak/broken security pages */
+:root:has(#identity-box[pageproxystate="valid"]:is(.weakCipher, .mixedDisplayContent, .mixedDisplayContentLoadedActiveBlocked, .certUserOverridden, .certErrorPage, .mixedActiveContent)) #xp-security-icon {
+  background-image: url("chrome://browser/skin/xp-classic/icons/Security-broken.png") !important;
+}
+
+/* Show popup blocker / info icon when popups are blocked */
+:root:has(#blocked-permissions-container #popup:not([hidden])) #xp-page-report-icon {
+  background-image: url("chrome://browser/skin/xp-classic/icons/Info.png") !important;
 }
