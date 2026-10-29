@@ -6,11 +6,86 @@
  * Firefox 1.0 Bookmarks Toolbar (bookmarksbar.css)
  * ======================================================================= */
 
+@namespace xul url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
 #PersonalToolbar {
-  min-height: var(--xp-bookmarksbar-height) !important;
+  min-height: 24px !important;
+  height: 24px !important;
+  max-height: 26px !important;
   padding: 1px 2px !important;
   border-top: 1px solid var(--xp-3d-highlight) !important;
   border-bottom: 1px solid var(--xp-3d-shadow) !important;
   background-color: var(--xp-bg-face) !important;
   color: var(--xp-text-primary) !important;
+  align-items: center !important;
+}
+
+#PersonalToolbar #PlacesToolbarItems {
+  align-items: center !important;
+}
+
+/* ::::: Classic 1.0 Bookmark Buttons (browser.css lines 52-76) ::::: */
+
+#PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton) {
+  appearance: none !important;
+  margin: 0 1px !important;
+  min-width: 0 !important;
+  max-width: 13em !important;
+  padding: 2px 4px !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  background-color: transparent !important;
+  color: var(--xp-text-primary) !important;
+  font-family: var(--xp-font-family) !important;
+  font-size: var(--xp-font-size) !important;
+  align-items: center !important;
+}
+
+#PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton, [disabled], [open]):hover {
+  border-color: var(--xp-3d-highlight) var(--xp-3d-shadow) var(--xp-3d-shadow) var(--xp-3d-highlight) !important;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+#PersonalToolbar toolbarbutton.bookmark-item:not(.subviewbutton, [disabled]):is(:hover:active, [open="true"], [open]) {
+  border-color: var(--xp-3d-shadow) var(--xp-3d-highlight) var(--xp-3d-highlight) var(--xp-3d-shadow) !important;
+  padding: 3px 3px 1px 5px !important;
+  background-color: transparent !important;
+  outline: none !important;
+}
+
+/* Classic Winstripe 16x16 folder icon (Bookmarks-folder.png) for bookmark folders */
+.bookmark-item[container] > .toolbarbutton-icon,
+.bookmark-item[container] > .menu-iconic-left > .menu-iconic-icon {
+  width: 16px !important;
+  height: 16px !important;
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/Bookmarks-folder.png") !important;
+}
+
+.bookmark-item > .toolbarbutton-icon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-inline-end: 4px !important;
+}
+
+.bookmark-item > .toolbarbutton-text {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.bookmark-item > .toolbarbutton-menu-dropmarker {
+  display: none !important;
+}
+
+/* Classic Winstripe chevron overflow icon */
+#PlacesChevron {
+  list-style-image: url("chrome://browser/skin/xp-classic/icons/chevron.gif") !important;
+}
+
+#PlacesChevron > .toolbarbutton-icon {
+  width: 14px !important;
+  height: 14px !important;
+  padding: 0 !important;
 }

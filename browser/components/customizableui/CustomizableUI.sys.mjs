@@ -436,7 +436,7 @@ var CustomizableUIInternal = {
       {
         type: CustomizableUI.TYPE_TOOLBAR,
         defaultPlacements: ["personal-bookmarks"],
-        defaultCollapsed: "newtab",
+        defaultCollapsed: false,
       },
       true
     );
