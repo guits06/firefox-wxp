@@ -33,7 +33,7 @@ The fork transforms modern Firefox into an authentic Windows XP / Firefox 1.0 ex
 
 ## 2. Minimal Core Touchpoints (Watch These During Rebasing)
 
-Upstream modifications to core files are deliberately kept minimal (12 touchpoints) to ensure effortless merges:
+Upstream modifications to core files are deliberately kept minimal (13 touchpoints) to ensure effortless merges:
 
 | File | Purpose | Merge Conflict Action |
 |---|---|---|
@@ -49,6 +49,7 @@ Upstream modifications to core files are deliberately kept minimal (12 touchpoin
 | `browser/extensions/newtab/prerendered/*.html` | Links `chrome://browser/skin/xp-classic/newtab.css` and adds `chrome:` to CSP | Keep stylesheet link & CSP. |
 | `browser/extensions/moz.build` | Adds `"furuitube-redirect"` to `DIRS` (built-in extension sending youtube.com to yt.nasfurui.es, see `docs/furuitube.md`) | Keep the `DIRS` entry. |
 | `browser/app/distribution/moz.build` | Ships `policies.json` (force-installs uBlock Origin) | Keep the `FINAL_TARGET_FILES.distribution` block. |
+| `browser/installer/package-manifest.in` | Unconditionally packages `@RESPATH@/distribution/*` | Keep `@RESPATH@/distribution/*`. |
 
 ---
 
