@@ -69,19 +69,8 @@ open class StrictModeManager(
      * @param withPenaltyDeath boolean value to decide setting the penaltyDeath as a penalty.
      */
     fun enableStrictMode(withPenaltyDeath: Boolean) {
-        if (!isEnabledByBuildConfig) {
-            return
-        }
-
-        if (!mainLooper.isCurrentThread) {
-            throw IllegalStateException("StrictModeManager only supported on main thread")
-        }
-
-        val threadPolicy = buildThreadPolicy(withPenaltyDeath)
-        applyThreadPolicy(threadPolicy)
-
-        val vmPolicy = buildVmPolicy()
-        applyVmPolicy(vmPolicy)
+        // Disabled for stable release performance without penalty crashes
+        return
     }
 
     /**

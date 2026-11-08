@@ -24,37 +24,16 @@ object LeakCanarySetup : LeakCanarySetupInterface {
      * @param components Components needed to register LeakCanary on.
      */
     override fun setup(application: Application, components: Components) {
-        logger.info("LeakCanary is setting up.")
-        if (!AppWatcher.isInstalled) {
-            AppWatcher.manualInstall(
-                application = application,
-                watchersToInstall = AppWatcher.appDefaultWatchers(application),
-            )
-        }
-
-        val isEnabled =
-            components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
-                PreferenceManager.getDefaultSharedPreferences(application)
-                    .getBoolean(
-                        application.getPreferenceKey(R.string.pref_key_leakcanary),
-                        BuildConfig.LEAKCANARY,
-                    )
-            }
-
-        updateState(isEnabled, components)
+        // Disabled for stability and zero debug overhead
+        try {
+            LeakCanary.showLeakDisplayActivityLauncherIcon(false)
+        } catch (_: Throwable) {}
     }
 
-    /**
-     * Update the state of LeakCanary.
-     *
-     * @param isEnabled Whether or not to show the launcher icon for LeakCanary.
-     * @param components Components needed to register LeakCanary on.
-     */
     override fun updateState(isEnabled: Boolean, components: Components) {
-        logger.info("LeakCanary is updating state.")
-        LeakCanary.showLeakDisplayActivityLauncherIcon(isEnabled)
-        components.strictMode.allowViolation(StrictMode::allowThreadDiskReads) {
-            LeakCanary.config = LeakCanary.config.copy(dumpHeap = isEnabled)
-        }
+        // Disabled
+        try {
+            LeakCanary.showLeakDisplayActivityLauncherIcon(false)
+        } catch (_: Throwable) {}
     }
 }

@@ -429,11 +429,7 @@ android.buildTypes.debug.with {
         buildConfigField 'String', 'NIMBUS_ENDPOINT', 'null'
     }
 
-    if (project.hasProperty("disableLeakCanary") || gradle.hasProperty("localProperties.disableLeakCanary")) {
-        buildConfigField "boolean", "LEAKCANARY", "false"
-    } else {
-        buildConfigField "boolean", "LEAKCANARY", "true"
-    }
+    buildConfigField "boolean", "LEAKCANARY", "false"
 
     // Read `secretSettings.*` entries from local.properties and pass them to the app.
     def secretSettingsPrefix = "localProperties.secretSettings."

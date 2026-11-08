@@ -21,6 +21,12 @@
         android:name="org.mozilla.fenix.FenixApplication">
 
         <activity android:name="androidx.activity.ComponentActivity" />
+        <activity-alias
+            android:name="leakcanary.internal.activity.LeakLauncherActivity"
+            tools:node="remove" />
+        <activity
+            android:name="leakcanary.internal.activity.LeakActivity"
+            tools:node="remove" />
     </application>
 
 </manifest>

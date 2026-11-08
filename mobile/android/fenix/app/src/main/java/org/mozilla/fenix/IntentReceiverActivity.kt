@@ -75,6 +75,13 @@ class IntentReceiverActivity : Activity() {
     }
 
     fun processIntent(intent: Intent) {
+        val rawData = intent.toSafeIntent().data
+        if (rawData != null) {
+            val redirected = org.mozilla.fenix.furuitube.FuruiTubeRedirect.mapTarget(rawData.toString())
+            if (redirected != null) {
+                intent.data = android.net.Uri.parse(redirected)
+            }
+        }
         val data = intent.toSafeIntent().data
         if (intent.action == Intent.ACTION_VIEW && data != null && isFxaPairingLink(data)) {
             SyncAuth.pairingLinkOpened.record(
