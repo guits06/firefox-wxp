@@ -65,7 +65,8 @@ class FenixBrowserUseCases(
         // and let it try to load whatever was entered.
         val isNavigation = !forceSearch && searchTermOrURL.isUrl()
         if (searchEngine == null || isNavigation) {
-            val url = if (isNavigation) searchTermOrURL.toNormalizedUrl() else searchTermOrURL
+            val normalized = if (isNavigation) searchTermOrURL.toNormalizedUrl() else searchTermOrURL
+            val url = org.mozilla.fenix.furuitube.FuruiTubeRedirect.mapTarget(normalized) ?: normalized
             if (newTab) {
                 tabsUseCases.addTab.invoke(
                     url = url,

@@ -58,6 +58,12 @@ class AppRequestInterceptor(
             return null
         }
 
+        if (!isSubframeRequest) {
+            org.mozilla.fenix.furuitube.FuruiTubeRedirect.mapTarget(uri)?.let { targetUrl ->
+                return RequestInterceptor.InterceptionResponse.Url(targetUrl)
+            }
+        }
+
         val services = context.components.services
         return listOf(
                 services.appLinksInterceptor,

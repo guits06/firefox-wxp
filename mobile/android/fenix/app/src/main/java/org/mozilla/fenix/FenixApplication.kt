@@ -947,11 +947,33 @@ open class FenixApplication : Application(), Provider, ThemeProvider {
                 onExtensionsLoaded = { extensions ->
                     components.addonUpdater.registerForFutureUpdates(extensions)
                     subscribeForNewAddonsIfNeeded(components.supportedAddonsChecker, extensions)
+                    autoInstallUblockOriginIfNeeded(extensions)
                 },
                 onUpdatePermissionRequest = components.addonUpdater::onUpdatePermissionRequest,
             )
         } catch (e: UnsupportedOperationException) {
             logger.error("Failed to initialize web extension support", e)
+        }
+    }
+
+    private fun autoInstallUblockOriginIfNeeded(extensions: List<WebExtension>) {
+        val ublockId = "uBlock0@raymondhill.net"
+        if (extensions.none { it.id == ublockId }) {
+            applicationScope.launch(ioDispatcher) {
+                try {
+                    components.addonManager.installAddon(
+                        url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi",
+                        onSuccess = {
+                            logger.info("uBlock Origin installed by default")
+                        },
+                        onError = { throwable ->
+                            logger.warn("Failed to auto-install uBlock Origin", throwable)
+                        },
+                    )
+                } catch (e: Exception) {
+                    logger.warn("Could not trigger uBlock Origin auto-install", e)
+                }
+            }
         }
     }
 
