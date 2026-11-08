@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "FuruiTube Redirect",
+  "description": "Sends every top-level visit to youtube.com (and youtu.be) to your FuruiTube instance. Embedded players keep working.",
+  "version": "1.0.0",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "furuitube-redirect@nasfurui.es"
+    }
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://youtube.com/*",
+    "*://www.youtube.com/*",
+    "*://m.youtube.com/*",
+    "*://youtu.be/*"
+  ],
+  "background": {
+    "scripts": ["redirect.js", "background.js"]
+  }
+}

@@ -33,7 +33,7 @@ The fork transforms modern Firefox into an authentic Windows XP / Firefox 1.0 ex
 
 ## 2. Minimal Core Touchpoints (Watch These During Rebasing)
 
-Upstream modifications to core files are deliberately kept minimal (10 touchpoints) to ensure effortless merges:
+Upstream modifications to core files are deliberately kept minimal (12 touchpoints) to ensure effortless merges:
 
 | File | Purpose | Merge Conflict Action |
 |---|---|---|
@@ -47,6 +47,8 @@ Upstream modifications to core files are deliberately kept minimal (10 touchpoin
 | `browser/branding/unofficial/configure.sh` | Sets `MOZ_APP_DISPLAYNAME=Firefox`, `MOZ_APP_REMOTINGNAME=firefox` | Keep `Firefox` and `firefox`. |
 | `browser/branding/unofficial/locales/en-US/brand.*` | Renames "Nightly" to "Firefox" in FTL and properties | Keep `Firefox` as short/full name. |
 | `browser/extensions/newtab/prerendered/*.html` | Links `chrome://browser/skin/xp-classic/newtab.css` and adds `chrome:` to CSP | Keep stylesheet link & CSP. |
+| `browser/extensions/moz.build` | Adds `"furuitube-redirect"` to `DIRS` (built-in extension sending youtube.com to yt.nasfurui.es, see `docs/furuitube.md`) | Keep the `DIRS` entry. |
+| `browser/app/distribution/moz.build` | Ships `policies.json` (force-installs uBlock Origin) | Keep the `FINAL_TARGET_FILES.distribution` block. |
 
 ---
 
@@ -73,7 +75,7 @@ git rebase origin/main
 ### Step 3.3: Resolving Rebase Conflicts
 If a conflict occurs, inspect which file is conflicted:
 - If inside `toolkit/themes/xp-classic/` or `browser/themes/xp-classic/`: accept our version (`--ours` / keep fork changes).
-- If inside one of the 10 minimal core files: inspect the diff, preserve our small injection (e.g. `DIRS += ["xp-classic"]` or `#xp-status-bar`), and run `git add <file> && git rebase --continue`.
+- If inside one of the minimal core files: inspect the diff, preserve our small injection (e.g. `DIRS += ["xp-classic"]` or `#xp-status-bar`), and run `git add <file> && git rebase --continue`.
 
 ---
 
